@@ -1,0 +1,16 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="UTS.AvaloniaUI.ComponentTask1.App"
+             xmlns:local="using:UTS.AvaloniaUI.ComponentTask1"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+             <Application.Styles>
+                 <FluentTheme />
+                 <StyleInclude Source="avares://TickChartControl/TickChart.axaml"/>
+             </Application.Styles>
+             
+</Application>

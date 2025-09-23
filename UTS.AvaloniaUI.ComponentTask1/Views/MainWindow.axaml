@@ -1,0 +1,80 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:UTS.AvaloniaUI.ComponentTask1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:TickChart.Controls;assembly=TickChartControl"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="UTS.AvaloniaUI.ComponentTask1.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="UTS.AvaloniaUI.ComponentTask1">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	
+	<Grid Margin="10" RowDefinitions="Auto,*">
+        <!-- Control Panel -->
+        <Border Grid.Row="0" 
+                Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+                CornerRadius="5"
+                Padding="15"
+                Margin="0,0,0,10">
+            <Grid ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto">
+                <!-- Start/Stop Button -->
+                <Button Grid.Column="0"
+                        Name="StartStopButton"
+                        Content="{Binding StartStopButtonText}"
+                        Command="{Binding ToggleDataGenerationCommand}"
+                        Padding="20,8"
+                        Margin="0,0,15,0"
+                        Classes="accent" />
+
+                <!-- Spacer -->
+                <Rectangle Grid.Column="1" />
+
+                <!-- Max Visible Ticks Control -->
+                <TextBlock Grid.Column="2"
+                           Text="Max Visible Ticks:"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0" />
+
+                <NumericUpDown Grid.Column="3"
+                               Name="MaxTicksNumericUpDown"
+                               Value="{Binding MaxVisibleTicks}"
+                               Minimum="100"
+                               Maximum="10000"
+                               Increment="50"
+                               Width="120"
+                               Margin="0,0,15,0" />
+
+                <!-- Theme Control -->
+                <TextBlock Grid.Column="4"
+                           Text="Theme:"
+                           VerticalAlignment="Center"
+                           Margin="0,0,10,0" />
+
+                <ComboBox Grid.Column="5"
+                          Name="ThemeComboBox"
+                          SelectedItem="{Binding SelectedTheme}"
+                          ItemsSource="{Binding AvailableThemes}"
+                          Width="100" />
+            </Grid>
+        </Border>
+
+        <!-- Chart Area -->
+        <Border Grid.Row="1"
+                Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                CornerRadius="5"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="1">
+            <controls:TickChart Name="TickChart"
+                                MaxVisibleTicks="{Binding MaxVisibleTicks}"
+                                Theme="{Binding SelectedTheme}"
+                                Margin="10" />
+        </Border>
+        </Grid>
+</Window>

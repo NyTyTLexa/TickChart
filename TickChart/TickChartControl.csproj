@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.6" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.3.6" />
+    <PackageReference Include="ScottPlot.Avalonia" Version="5.0.56" />
+  </ItemGroup>
+
+   <ItemGroup>
+    <AvaloniaResource Include="**\*.axaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.6" />
+  </ItemGroup>
+
+</Project>
